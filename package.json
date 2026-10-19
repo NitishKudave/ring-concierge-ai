@@ -1,0 +1,28 @@
+{
+  "name": "ring-concierge-ai",
+  "version": "1.0.0",
+  "description": "Autonomous Smart Home Ambient Gatekeeper connecting Ring, Alexa+, and AWS Bedrock | Amazon Developer Hackathon 2026",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "test": "node test/test-agent.js"
+  },
+  "keywords": [
+    "amazon-developer-hackathon-2026",
+    "alexa-plus",
+    "ring",
+    "aws-bedrock",
+    "model-context-protocol",
+    "mcp",
+    "smart-home",
+    "ambient-intelligence"
+  ],
+  "author": "Nitish Kudave",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  }
+}
