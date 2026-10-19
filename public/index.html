@@ -6,281 +6,400 @@
   <title>Ring Concierge AI | Amazon Developer Hackathon 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <!-- Background Glow Accents -->
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
+<body class="theme-obsidian">
+  <!-- Subtle Spatial Lighting Gradients -->
+  <div class="ambient-mesh">
+    <div class="mesh-orb orb-cyan"></div>
+    <div class="mesh-orb orb-indigo"></div>
+    <div class="mesh-orb orb-amber"></div>
+  </div>
 
-  <!-- Header -->
-  <header class="navbar">
-    <div class="nav-left">
-      <div class="logo-badge">
-        <span class="bell-icon">🔔</span>
-        <div class="logo-text">
+  <!-- Top Glass Navigation Bar -->
+  <header class="top-nav">
+    <div class="brand-cluster">
+      <div class="brand-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <div class="brand-title-row">
           <h1>Ring Concierge AI</h1>
-          <span class="sub-logo">Autonomous Ambient Smart-Home Gatekeeper</span>
+          <span class="system-status-chip">
+            <span class="pulse-dot"></span> SYSTEM ONLINE
+          </span>
         </div>
+        <span class="brand-meta">Autonomous Ambient Smart-Home Gatekeeper • Amazon Hackathon 2026</span>
       </div>
     </div>
-    <div class="nav-badges">
-      <span class="badge badge-amazon">🏆 Amazon Developer Hackathon 2026</span>
-      <span class="badge badge-track">⚡ Alexa+ & Ring Ecosystem</span>
-      <span class="badge badge-bedrock">🧠 AWS Bedrock & MCP</span>
+
+    <!-- Center System Badges -->
+    <div class="telemetry-bar">
+      <div class="telemetry-item">
+        <span class="telemetry-label">ENGINE</span>
+        <span class="telemetry-val">AWS Bedrock (Claude 3.5 Sonnet)</span>
+      </div>
+      <div class="telemetry-sep">/</div>
+      <div class="telemetry-item">
+        <span class="telemetry-label">PROTOCOL</span>
+        <span class="telemetry-val">Alexa+ MCP (Model Context)</span>
+      </div>
+      <div class="telemetry-sep">/</div>
+      <div class="telemetry-item">
+        <span class="telemetry-label">ROUNDTRIP</span>
+        <span class="telemetry-val highlight-cyan" id="livePing">142ms</span>
+      </div>
     </div>
-    <div class="nav-right">
-      <button id="soundToggleBtn" class="btn btn-secondary">
-        <span id="soundIcon">🔊</span> Audio: ON
+
+    <!-- Right Controls -->
+    <div class="nav-controls">
+      <button id="soundToggleBtn" class="control-btn" title="Toggle Synthesized Voice Audio">
+        <svg id="soundSvg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        <span id="soundLabel">Audio: Active</span>
       </button>
-      <button id="feedbackModalBtn" class="btn btn-outline">
-        📝 Amazon Dev Feedback
+
+      <button id="feedbackModalBtn" class="control-btn btn-glass-accent">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        Amazon Dev Feedback
       </button>
-      <a href="https://github.com/NitishKudave/ring-concierge-ai" target="_blank" class="btn btn-github">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+
+      <a href="https://github.com/NitishKudave/ring-concierge-ai" target="_blank" class="control-btn btn-github">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         GitHub
       </a>
     </div>
   </header>
 
-  <!-- Main Grid Dashboard -->
-  <main class="dashboard-grid">
+  <!-- Main Workstation Layout -->
+  <main class="console-layout">
 
-    <!-- COLUMN 1: Ring Doorbell & Camera Simulator -->
-    <section class="card panel-ring">
-      <div class="card-header">
-        <div class="card-title">
-          <span class="icon-indicator online"></span>
-          <h2>Ring Video Doorbell Pro (Simulated)</h2>
-        </div>
-        <span class="device-pill">Device ID: rng-front-door-01</span>
-      </div>
-
-      <!-- Camera Stream Box -->
-      <div class="camera-stream" id="cameraStream">
-        <div class="stream-overlay-top">
-          <span class="badge-rec">● LIVE 1080p HDR</span>
-          <span class="badge-fps" id="timecode">00:00:00</span>
-        </div>
-
-        <!-- Simulated Visual Canvas / Scene -->
-        <div class="scene-container" id="sceneContainer">
-          <div class="porch-background" id="porchBg"></div>
-          <div class="visitor-avatar" id="visitorAvatar">
-            <div class="avatar-icon" id="avatarEmoji">📦</div>
-            <div class="avatar-badge" id="avatarRole">Delivery Courier</div>
+    <!-- LEFT PANEL: Ring Optical & Audio Surveillance -->
+    <section class="console-panel panel-ring">
+      <div class="panel-header">
+        <div class="panel-identity">
+          <div class="device-icon-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
           </div>
-          <div class="motion-box" id="motionBox">
-            <span class="motion-tag">DETECTED: Human [98.4%]</span>
+          <div>
+            <h2>Ring Video Doorbell Pro</h2>
+            <div class="panel-sub">NODE ID: rng-frontporch-01 • RSSI: -51dBm</div>
           </div>
         </div>
 
-        <div class="stream-overlay-bottom">
-          <span class="overlay-text" id="streamStatusText">Ready • Ambient Motion Sensor Armed</span>
-          <span class="ir-badge">IR Night Vision: Auto</span>
+        <!-- Vision Mode Toggle -->
+        <div class="mode-switch-group">
+          <button id="modeDayBtn" class="mode-chip active" title="Daylight 1080p HDR">HDR Day</button>
+          <button id="modeNightBtn" class="mode-chip" title="Infrared Night Vision Mode">IR Night</button>
         </div>
       </div>
 
-      <!-- Visitor Persona Selector -->
-      <div class="control-group">
-        <label class="section-label">Select Simulated Visitor Persona:</label>
-        <div class="persona-grid">
-          <button class="btn-persona active" data-persona="delivery">
-            <span class="persona-icon">📦</span>
-            <div class="persona-info">
+      <!-- Real Security Camera Viewport -->
+      <div class="camera-viewport" id="cameraViewport">
+        <!-- Live Photorealistic Camera Feed Image -->
+        <img src="camera_feed.jpg" alt="Ring Camera Feed" class="camera-feed-img" id="cameraFeedImg">
+
+        <!-- Authentic Camera HUD Layer -->
+        <div class="camera-hud-layer">
+          <div class="hud-top">
+            <div class="hud-rec-cluster">
+              <span class="rec-dot"></span>
+              <span class="rec-label">LIVE REC</span>
+              <span class="bitrate-tag">4.8 Mbps • H.265</span>
+            </div>
+            <div class="hud-time-cluster">
+              <span id="hudTimestamp">2026-10-26 19:35:42 EDT</span>
+            </div>
+          </div>
+
+          <!-- Dynamic CV AI Bounding Box Tracker -->
+          <div class="ai-bounding-box" id="aiBoundingBox">
+            <div class="corner-bracket tl"></div>
+            <div class="corner-bracket tr"></div>
+            <div class="corner-bracket bl"></div>
+            <div class="corner-bracket br"></div>
+            <div class="target-crosshair"></div>
+            <div class="target-meta">
+              <span class="target-type" id="targetTypeTag">OBJECT: HUMAN COURIER</span>
+              <span class="target-confidence" id="targetConfTag">99.4% CONF</span>
+            </div>
+          </div>
+
+          <div class="hud-bottom">
+            <div class="hud-status-badge">
+              <span class="security-level-pill" id="securityStatusPill">PERIMETER ARMED</span>
+              <span class="hud-subtext" id="streamTelemetry">140° Ultra-Wide Fisheye • Audio Duplex</span>
+            </div>
+            <div class="hud-lens-tag">Ring Pro Sensor v4.2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Persona Selector Chips -->
+      <div class="section-container">
+        <div class="section-title-row">
+          <span class="section-caption">TEST VISITOR SCENARIO</span>
+          <span class="section-hint">Select to simulate smart response</span>
+        </div>
+        <div class="persona-segmented-grid">
+          <button class="persona-tile active" data-persona="delivery">
+            <div class="tile-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <div class="tile-content">
               <strong>Delivery Courier</strong>
-              <small>Amazon / FedEx parcel</small>
+              <span>Amazon / FedEx Parcel</span>
             </div>
           </button>
 
-          <button class="btn-persona" data-persona="neighbor">
-            <span class="persona-icon">👤</span>
-            <div class="persona-info">
-              <strong>Friendly Neighbor</strong>
-              <small>Returning garden tool</small>
+          <button class="persona-tile" data-persona="neighbor">
+            <div class="tile-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="tile-content">
+              <strong>Verified Contact</strong>
+              <span>Neighbor (Sarah)</span>
             </div>
           </button>
 
-          <button class="btn-persona" data-persona="solicitor">
-            <span class="persona-icon">💼</span>
-            <div class="persona-info">
-              <strong>Door-to-Door Sales</strong>
-              <small>Solar panel pitch</small>
+          <button class="persona-tile" data-persona="solicitor">
+            <div class="tile-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            </div>
+            <div class="tile-content">
+              <strong>Sales Solicitor</strong>
+              <span>Unsolicited Solar Pitch</span>
             </div>
           </button>
 
-          <button class="btn-persona" data-persona="suspicious">
-            <span class="persona-icon">🌙</span>
-            <div class="persona-info">
-              <strong>Suspicious Activity</strong>
-              <small>Late-night loitering</small>
+          <button class="persona-tile" data-persona="suspicious">
+            <div class="tile-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <div class="tile-content">
+              <strong>Night Loitering</strong>
+              <span>Suspicious Proximity</span>
             </div>
           </button>
         </div>
       </div>
 
-      <!-- Action Trigger Buttons -->
-      <div class="action-buttons">
-        <button id="pressDoorbellBtn" class="btn btn-primary btn-pulse">
-          🛎️ Press Doorbell (Chime)
+      <!-- Action Triggers -->
+      <div class="hardware-trigger-cluster">
+        <button id="pressDoorbellBtn" class="hw-btn hw-btn-accent">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          Ring Doorbell (Chime)
         </button>
-        <button id="triggerMotionBtn" class="btn btn-secondary">
-          🏃 Trigger Motion Only
+        <button id="triggerMotionBtn" class="hw-btn hw-btn-subtle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Trigger Motion
         </button>
-        <button id="speakCustomBtn" class="btn btn-outline">
-          🎙️ Custom Visitor Input
+        <button id="speakCustomBtn" class="hw-btn hw-btn-subtle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          Custom Speech
         </button>
       </div>
 
-      <!-- Ring Doorbell Speaker Feed (Two-way audio) -->
-      <div class="doorbell-speaker-box">
-        <div class="speaker-header">
-          <span>🔊 Ring Outdoor Speaker (AI Voice Output)</span>
-          <div class="sound-wave" id="soundWave">
-            <span></span><span></span><span></span><span></span><span></span>
+      <!-- Two-Way Outdoor Speaker Feed -->
+      <div class="speaker-module">
+        <div class="speaker-module-header">
+          <div class="speaker-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            <span>Outdoor Intercom Stream (AI Voice Output)</span>
           </div>
+          <!-- Live Real-Time Canvas Audio Spectrum -->
+          <canvas id="audioVisualizerCanvas" width="120" height="20" class="audio-spectrum-canvas"></canvas>
         </div>
-        <div class="speaker-transcript" id="doorbellSpeechOutput">
-          <em>Awaiting visitor arrival...</em>
+        <div class="speaker-transcript-panel" id="doorbellSpeechOutput">
+          <span class="transcript-placeholder">Awaiting visitor arrival at front gate...</span>
         </div>
       </div>
     </section>
 
-    <!-- COLUMN 2: AI Concierge & Alexa+ Ambient Hub -->
-    <section class="card panel-alexa">
-      <div class="card-header">
-        <div class="card-title">
-          <span class="icon-indicator ai-active"></span>
-          <h2>Amazon Bedrock & Alexa+ Core</h2>
-        </div>
-        <span class="device-pill">MCP Agent Enabled</span>
-      </div>
-
-      <!-- Bedrock Reasoning Agent Engine -->
-      <div class="agent-reasoning-card">
-        <div class="agent-model-info">
-          <div class="model-badge">
-            <span class="sparkle">✨</span>
-            <strong>Bedrock: Claude 3.5 Sonnet</strong>
+    <!-- CENTER PANEL: Amazon Bedrock & Alexa+ Ambient Core -->
+    <section class="console-panel panel-agent">
+      <div class="panel-header">
+        <div class="panel-identity">
+          <div class="device-icon-box box-bedrock">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
           </div>
-          <span class="latency-badge" id="agentLatency">Latency: ~210ms</span>
+          <div>
+            <h2>Amazon Bedrock & Alexa+ Core</h2>
+            <div class="panel-sub">AGENT RUNTIME • MODEL CONTEXT PROTOCOL (MCP)</div>
+          </div>
+        </div>
+        <span class="agent-tier-badge">Bedrock Serverless</span>
+      </div>
+
+      <!-- AI Inference Pipeline Tracker -->
+      <div class="pipeline-track-card">
+        <div class="model-telemetry-row">
+          <div class="model-chip">
+            <span class="sparkle-glow">✦</span>
+            <span>Anthropic Claude 3.5 Sonnet</span>
+          </div>
+          <div class="latency-readout" id="agentLatency">Inference: 182ms</div>
         </div>
 
-        <div class="agent-pipeline">
-          <div class="step-chip" id="stepDetect">1. Event Ingestion</div>
-          <div class="step-chip" id="stepReason">2. Intent Reasoning</div>
-          <div class="step-chip" id="stepMcp">3. MCP Tool Dispatch</div>
-          <div class="step-chip" id="stepDeliver">4. Cross-Device Sync</div>
+        <div class="pipeline-milestones">
+          <div class="milestone-step" id="stepDetect">
+            <span class="step-num">01</span>
+            <span class="step-title">Ingest</span>
+          </div>
+          <div class="milestone-line"></div>
+          <div class="milestone-step" id="stepReason">
+            <span class="step-num">02</span>
+            <span class="step-title">Classify</span>
+          </div>
+          <div class="milestone-line"></div>
+          <div class="milestone-step" id="stepMcp">
+            <span class="step-num">03</span>
+            <span class="step-title">MCP Tools</span>
+          </div>
+          <div class="milestone-line"></div>
+          <div class="milestone-step" id="stepDeliver">
+            <span class="step-num">04</span>
+            <span class="step-title">Ambient Sync</span>
+          </div>
         </div>
 
-        <div class="decision-box" id="decisionBox">
-          <span class="decision-label">AUTONOMOUS DECISION:</span>
-          <span class="decision-value" id="decisionValue">IDLE - MONITORING</span>
+        <div class="agent-decision-terminal">
+          <div class="terminal-header">
+            <span class="terminal-title">AUTONOMOUS AGENT DECISION LOG</span>
+            <span class="terminal-code" id="terminalEventCode">EVT-IDLE-000</span>
+          </div>
+          <div class="terminal-body" id="decisionTerminalBody">
+            <span class="syntax-keyword">STATUS:</span> <span class="syntax-string" id="decisionStatusText">MONITORING_PERIMETER</span><br>
+            <span class="syntax-keyword">ACTION:</span> <span class="syntax-val" id="decisionActionText">Awaiting event trigger</span>
+          </div>
         </div>
       </div>
 
-      <!-- Alexa+ Ambient Echo Speaker Simulator -->
-      <div class="alexa-echo-card">
-        <div class="alexa-visualizer-container">
-          <div class="alexa-light-ring" id="alexaLightRing">
-            <div class="inner-core">
-              <span class="alexa-icon">💬</span>
+      <!-- Alexa+ Ambient Echo Device Simulation -->
+      <div class="echo-hardware-card">
+        <div class="echo-display-cluster">
+          <!-- Physical Pulsing Light Ring Diffusion -->
+          <div class="echo-light-ring-wrapper">
+            <div class="echo-light-ring" id="alexaLightRing">
+              <div class="echo-center-core">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </div>
             </div>
           </div>
-          <div class="alexa-status">
-            <h3>Alexa+ Living Room Ambient Hub</h3>
-            <p id="alexaStatusText">Listening contextually...</p>
+
+          <div class="echo-info-cluster">
+            <div class="echo-title-row">
+              <h3>Alexa+ Living Room Hub</h3>
+              <span class="volume-indicator">Volume 30% (Ambient)</span>
+            </div>
+            <p class="echo-status-state" id="alexaStatusText">Ambient awareness active</p>
           </div>
         </div>
 
-        <div class="ambient-whisper-card">
-          <div class="whisper-header">
-            <span>🔈 Ambient Audio Whisper (In-Home)</span>
-            <span class="volume-tag">Subtle Volume (30%)</span>
+        <!-- In-Home Ambient Whisper Audio Card -->
+        <div class="ambient-whisper-module">
+          <div class="whisper-tagline">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            <span>IN-HOME AMBIENT WHISPER (NO LOUD CHIME)</span>
           </div>
-          <div class="whisper-content" id="alexaWhisperText">
-            <em>"No recent ambient alerts."</em>
+          <div class="whisper-text-box" id="alexaWhisperText">
+            <em>"No active visitor alerts."</em>
           </div>
         </div>
 
         <!-- Follow-up Conversational Query -->
-        <div class="alexa-query-box">
-          <label class="query-label">Ask Alexa+ Follow-up:</label>
-          <div class="query-input-group">
-            <input type="text" id="alexaQueryInput" placeholder="e.g. 'Alexa, who was at the door?'" value="Alexa, who was at the door?">
-            <button id="askAlexaBtn" class="btn btn-primary">Ask</button>
+        <div class="alexa-interaction-form">
+          <label class="input-caption">Ask Alexa+ Follow-Up (MCP Memory Query):</label>
+          <div class="interaction-input-row">
+            <input type="text" id="alexaQueryInput" value="Alexa, who was at the door?" class="command-input">
+            <button id="askAlexaBtn" class="hw-btn hw-btn-accent">Ask</button>
           </div>
-          <div class="alexa-reply-box" id="alexaReplyBox">
-            <span class="reply-tag">Alexa+ Response:</span>
-            <p id="alexaReplyText">Click "Ask" to query the smart concierge memory.</p>
+          <div class="alexa-response-quote" id="alexaReplyBox">
+            <span class="quote-speaker">ALEXA+:</span>
+            <p id="alexaReplyText">Click "Ask" or type a prompt to test cross-device agent memory.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- COLUMN 3: Fire TV PIP & DynamoDB Event Stream -->
-    <section class="card panel-firetv-db">
-      <!-- Fire TV Picture-in-Picture Mini-Screen -->
-      <div class="firetv-card">
-        <div class="card-header">
-          <div class="card-title">
-            <span class="icon-indicator tv-active"></span>
-            <h2>Fire TV Ambient Experience</h2>
+    <!-- RIGHT PANEL: Fire TV Ambient Experience & DynamoDB Ledger -->
+    <section class="console-panel panel-telemetry">
+      
+      <!-- Fire TV Ambient Experience Container -->
+      <div class="firetv-hardware-frame">
+        <div class="panel-header compact-header">
+          <div class="panel-identity">
+            <div class="device-icon-box box-tv">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+            </div>
+            <div>
+              <h3>Fire TV Ambient PIP</h3>
+              <div class="panel-sub">FIRE OS 8 • LIVING ROOM DISPLAY</div>
+            </div>
           </div>
-          <span class="device-pill">Living Room TV</span>
         </div>
 
-        <div class="tv-screen" id="tvScreen">
-          <div class="tv-content-simulation">
-            <div class="movie-backdrop">
-              <span class="movie-title">Prime Video: Ambient Cinema</span>
+        <!-- TV Display Simulation -->
+        <div class="tv-bezel-screen" id="tvScreen">
+          <div class="tv-ambient-art">
+            <div class="tv-program-info">
+              <span class="prime-tag">PRIME VIDEO</span>
+              <span class="tv-stream-title">The Grand Tour: Season Finale</span>
             </div>
           </div>
 
-          <!-- Dynamic PIP Overlay Banner -->
-          <div class="tv-pip-overlay hidden" id="tvPipOverlay">
-            <div class="pip-header">
-              <span class="pip-badge">🔔 FRONT DOOR ALERT</span>
-              <button class="pip-close" id="pipCloseBtn">×</button>
+          <!-- Frosted Picture-in-Picture Notification HUD -->
+          <div class="firetv-pip-hud hidden" id="tvPipOverlay">
+            <div class="pip-topbar">
+              <span class="pip-alert-pill">FRONT DOOR LIVE</span>
+              <button class="pip-dismiss-btn" id="pipCloseBtn">×</button>
             </div>
-            <div class="pip-body">
-              <div class="pip-thumbnail" id="pipThumb">📦</div>
-              <div class="pip-details">
-                <strong id="pipTitle">Courier at Door</strong>
-                <p id="pipSummary">Package placed behind porch pillar.</p>
+            <div class="pip-content-flex">
+              <div class="pip-icon-bubble" id="pipThumb">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </div>
+              <div class="pip-copy">
+                <h4 id="pipTitle">Courier at Porch</h4>
+                <p id="pipSummary">Package placed safely behind side pillar.</p>
               </div>
             </div>
-            <div class="pip-actions">
-              <button class="pip-btn">Dismiss</button>
-              <button class="pip-btn pip-btn-accent">Open Two-Way</button>
+            <div class="pip-actions-row">
+              <button class="pip-btn-action">Dismiss</button>
+              <button class="pip-btn-action pip-btn-primary">Open Two-Way</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Live DynamoDB Event Ledger -->
-      <div class="dynamodb-card">
-        <div class="card-header">
-          <div class="card-title">
-            <span class="icon-indicator db-active"></span>
-            <h2>DynamoDB Visitor Ledger</h2>
+      <!-- Amazon DynamoDB Security Ledger -->
+      <div class="dynamodb-ledger-frame">
+        <div class="panel-header compact-header">
+          <div class="panel-identity">
+            <div class="device-icon-box box-db">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            </div>
+            <div>
+              <h3>Amazon DynamoDB Ledger</h3>
+              <div class="panel-sub">TABLE: ring_visitor_events • AWS US-EAST-1</div>
+            </div>
           </div>
-          <span class="badge-count" id="eventCount">4 Events</span>
+          <span class="ledger-counter" id="eventCount">4 Records</span>
         </div>
 
-        <div class="event-table-container">
-          <table class="event-table">
+        <div class="ledger-table-wrapper">
+          <table class="ledger-table">
             <thead>
               <tr>
-                <th>Time</th>
-                <th>Visitor</th>
-                <th>Intent</th>
-                <th>Action</th>
+                <th>TIMESTAMP</th>
+                <th>CLASSIFICATION</th>
+                <th>ACTION TAKEN</th>
               </tr>
             </thead>
             <tbody id="eventTableBody">
-              <!-- Dynamically populated -->
+              <!-- Dynamically rendered -->
             </tbody>
           </table>
         </div>
@@ -288,36 +407,48 @@
     </section>
   </main>
 
-  <!-- Amazon Product Feedback Modal -->
-  <div class="modal-backdrop hidden" id="feedbackModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h2>📝 Official Amazon Developer Product Feedback</h2>
-        <button class="btn-close" id="closeModalBtn">×</button>
+  <!-- Amazon Developer Product Feedback Modal -->
+  <div class="modal-scrim hidden" id="feedbackModal">
+    <div class="modal-dialog">
+      <div class="modal-title-bar">
+        <div class="modal-title-cluster">
+          <span class="badge-amazon-official">AMAZON PRODUCT EVALUATION</span>
+          <h2>Official Developer Experience Feedback</h2>
+        </div>
+        <button class="modal-close-icon" id="closeModalBtn">×</button>
       </div>
-      <div class="modal-body">
-        <div class="feedback-alert">
-          <strong>Built for Amazon Developer Hackathon 2026:</strong> As required by the hackathon submission criteria, this document details friction points, zero-to-hello-world onboarding, and recommendations directly for Amazon Product & Engineering teams.
+
+      <div class="modal-content-scroller">
+        <div class="callout-box">
+          <strong>Build, Ship, Shape: Amazon Developer Hackathon 2026</strong>
+          <p>As requested by Amazon product teams in the official hackathon rules, this report provides technical feedback on developer friction, SDK usability, and recommendations for Alexa+, Ring, and Fire OS.</p>
         </div>
 
-        <h3>1. Onboarding & SDK Usability ("Zero to Hello World")</h3>
-        <p>The Alexa+ Agent Skill documentation and Model Context Protocol (MCP) integrations are major leaps forward. Testing agent tool schemas was smooth with the simulator, enabling rapid conversational turnarounds.</p>
+        <div class="feedback-section">
+          <h3>1. Onboarding & First Experience ("Zero to Hello World")</h3>
+          <p>The Alexa+ Agent Skill documentation and Model Context Protocol (MCP) integrations are a significant leap forward. Exposing typed tool schemas to the Bedrock foundation models enabled rapid conversational reasoning without writing custom intent dispatchers.</p>
+        </div>
 
-        <h3>2. Friction Points & Developer Pain Points</h3>
-        <ul>
-          <li><strong>Cross-Device Local Simulation:</strong> Testing an event originating from Ring, processing via Bedrock, and dispatching simultaneously to an Alexa+ ambient speaker and Fire TV PIP currently requires writing custom event brokers. An official <em>"Amazon Device Ecosystem CLI Sandbox"</em> would save hours of boilerplate.</li>
-          <li><strong>Webhook Event Latency:</strong> For outdoor smart doorbells, round-trip latency must stay below 900ms. Providing edge-cached prompt templates or an optimized Bedrock smart-home inference profile would be game-changing.</li>
-        </ul>
+        <div class="feedback-section">
+          <h3>2. Friction Points & Testing Bottlenecks</h3>
+          <ul>
+            <li><strong>Cross-Device Local Simulation:</strong> Testing an event flow that originates at a Ring doorbell, triggers a Bedrock LLM reasoning pass, speaks via an Alexa+ in-home whisper, and shows a Fire TV picture-in-picture card required custom WebSocket and UI mockers. <em>Recommendation: An official "Amazon Multi-Device Playground CLI" would accelerate prototype velocity tenfold.</em></li>
+            <li><strong>Outdoor Conversational Latency:</strong> For two-way audio on front porches, round-trip latency must stay below 900ms. An edge-optimized Bedrock smart-home inference profile would be game-changing.</li>
+          </ul>
+        </div>
 
-        <h3>3. Top Feature Requests for Amazon Teams</h3>
-        <ol>
-          <li>Pre-built MCP connectors for Ring and Fire OS in the Amazon Developer Console.</li>
-          <li>Direct WebRTC voice channel integration between Alexa+ agents and outdoor Ring two-way speakers.</li>
-        </ol>
+        <div class="feedback-section">
+          <h3>3. Key Feature Requests for Amazon Engineering</h3>
+          <ol>
+            <li>Native WebRTC audio streaming bridge directly between Alexa+ agent skills and outdoor Ring two-way speaker hardware.</li>
+            <li>Pre-built MCP connector templates for Ring and Fire OS directly in the Amazon Developer Console.</li>
+          </ol>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" id="copyFeedbackBtn">Copy Feedback for Submission</button>
-        <button class="btn btn-secondary" id="closeModalBottomBtn">Close</button>
+
+      <div class="modal-action-bar">
+        <button class="hw-btn hw-btn-accent" id="copyFeedbackBtn">Copy Feedback for Submission</button>
+        <button class="hw-btn hw-btn-subtle" id="closeModalBottomBtn">Close</button>
       </div>
     </div>
   </div>
